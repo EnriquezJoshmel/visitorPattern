@@ -1,0 +1,47 @@
+package visitorPattern;
+
+public class Telco implements TelcoSubscription{
+    private String telcoName;
+    private double promoPri;
+    private int dataAllow;
+    private boolean unliCT;
+
+    public Telco(int dataAllow, double promoPri, String telcoName, boolean unliCT)
+    {
+        this.telcoName = telcoName;
+        this.promoPri = promoPri;
+        this.dataAllow = dataAllow;
+        this.unliCT = unliCT;
+    }
+
+    @Override
+    public String accept(UsagePromo promo, double price){
+        return promo.showAllowance(telcoName, price);
+    }
+
+    @Override
+    public String accept(UnliCallOffer offer, boolean unliCallText) {
+        return offer.showUnliCallsTextOffer(telcoName, unliCallText);
+    }
+
+    //getters
+    @Override
+    public String getTelcoName(){
+        return telcoName;
+    }
+
+    @Override
+    public double getPromoPrice(){
+        return promoPri;
+    }
+
+    @Override
+    public int getDataAllowance(){
+        return dataAllow;
+    }
+
+    @Override
+    public boolean getUnliCallText(){
+        return unliCT;
+    }
+}
